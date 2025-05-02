@@ -1,20 +1,16 @@
 package com.example;
 
 public class App {
-
     public static void main(String[] args) {
+        Location location = new Location();
+        WeatherUpdates weatherUpdates = new WeatherUpdates();
 
-        var user1 = new User();
-        var user2 = new User();
-        var newsfeed = new Newsfeed();
+        location.addPropertyChangeListener(weatherUpdates);
 
-        user1.addPropertyChangeListener(newsfeed);
-        user2.addPropertyChangeListener(newsfeed);
+        location.setWeatherEvent("Sunny");
+        location.setWeatherEvent("Rainy");
+        location.setWeatherEvent("Cloudy");
 
-        user1.setStatus("Going for a walk");
-        user2.setStatus("Ejoying a coffee");
-
-        newsfeed.printStatus(user1);
+        weatherUpdates.printUpdates();
     }
-
 }
