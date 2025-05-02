@@ -1,7 +1,11 @@
 package com.example;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class User {
     private String status;
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     private String name;
 
     public User() {
@@ -10,6 +14,7 @@ public class User {
     }
 
     public void setStatus(String status) {
+        support.firePropertyChange("status", this.status, status);
         this.status = status;
     }
 
@@ -23,5 +28,9 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addPropertyChangeListener(Newsfeed newsfeed) {
+        support.addPropertyChangeListener((PropertyChangeListener) newsfeed);
     }
 }
