@@ -2,15 +2,18 @@ package com.example;
 
 public class App {
     public static void main(String[] args) {
-        Location location = new Location();
-        WeatherUpdates weatherUpdates = new WeatherUpdates();
 
-        location.addPropertyChangeListener(weatherUpdates);
+        var auction = new Auction();
+        auction.startAuction();
+        auction.placeBid();
 
-        location.setWeatherEvent("Sunny");
-        location.setWeatherEvent("Rainy");
-        location.setWeatherEvent("Cloudy");
 
-        weatherUpdates.printUpdates();
+        auction.startAuction();
+        auction.closeAuction();
+        auction.placeBid();
+
+        auction.closeAuction();
+
+
     }
 }
